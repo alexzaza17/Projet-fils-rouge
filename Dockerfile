@@ -1,10 +1,11 @@
 FROM python:3.10-alpine
+MAINTAINER alexzaza17"bernardtapi1702@gmail.com"
 WORKDIR /opt
 RUN pip3 install --upgrade pip
 # Set Odoo URL environment variable
-ENV ODOO_URL=http://example.com
+ENV ODOO_URL: https://odoo.com
 # Set pgAdmin URL environment variable
-ENV PGADMIN_URL=http://pgadmin.example.com
+ENV PGADMIN_URL: https://pgadmin.org
 #ENV ODOO_URL=1
 #ENV PGADMIN_URL=1
 #RUN pip3 install 
