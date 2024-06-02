@@ -1,4 +1,4 @@
-FROM python:3.10-alpine
+FROM python:3.6-alpine
 MAINTAINER alexzaza17"bernardtapi1702@gmail.com"
 WORKDIR /opt/src
 COPY app.py /opt/src/
