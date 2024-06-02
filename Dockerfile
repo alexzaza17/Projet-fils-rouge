@@ -1,7 +1,7 @@
 FROM python:3.6-alpine
 MAINTAINER alexzaza17"bernardtapi1702@gmail.com"
-WORKDIR /opt/src
-COPY app.py /opt/src/
+WORKDIR /opt
+COPY ./  /opt/src/
 # Install Flask
 RUN pip install flask
 # Set Odoo URL environment variable
