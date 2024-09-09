@@ -1,0 +1,17 @@
+#pgadmin-pvc.yml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pgadmin-pvc
+  labels:
+    app: pgadmin
+    env: prod
+  namespace: ic-group
+spec:
+ #storageClassName: standard
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+
