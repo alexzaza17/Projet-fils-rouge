@@ -3,7 +3,7 @@ MAINTAINER alexzaza17"bernardtapi1702@gmail.com"
 WORKDIR /opt
 # Install Flask
 RUN pip install flask
-COPY ./  /opt/
+COPY .  /opt/
 # Set Odoo URL environment variable
 ENV ODOO_URL="https://odoo.com"
 # Set pgAdmin URL environment variable
