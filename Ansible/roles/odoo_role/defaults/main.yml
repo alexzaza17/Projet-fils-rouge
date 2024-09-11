@@ -1,0 +1,4 @@
+---
+# defaults file for odoo_role
+odoo_network: ic_network_odoo
+odoo_web_data_volume: odoo-web-data
