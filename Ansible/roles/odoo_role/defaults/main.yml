@@ -1,4 +1,7 @@
 ---
 # defaults file for odoo_role
-odoo_network: ic_network_odoo
-odoo_web_data_volume: odoo-web-data
+odoo_network: odoo-net
+postgres_service_name: db
+postgres_container_name: odoo_db
+odoo_service_name: web
+odoo_container_name: odoo
