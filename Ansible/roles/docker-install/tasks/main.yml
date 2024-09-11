@@ -1,0 +1,82 @@
+---
+- name: Install Docker, Python3, and Docker Compose on CentOS and Amazon Linux
+  hosts: all
+  become: yes
+
+  tasks:
+    # Ensure system is up-to-date for CentOS or Amazon Linux
+    - name: Update all packages (CentOS and Amazon Linux)
+      yum:
+        name: "*"
+        state: latest
+      when: ansible_facts['os_family'] == "RedHat"
+
+    # Install required dependencies for Docker on CentOS and Amazon Linux
+    - name: Install required packages for Docker (CentOS and Amazon Linux)
+      yum:
+        name:
+          - yum-utils
+          - device-mapper-persistent-data
+          - lvm2
+        state: present
+
+    # Add Docker's official repository for CentOS
+    - name: Add Docker CE repository (CentOS)
+      yum_repository:
+        name: docker-ce
+        description: Docker CE Repository
+        baseurl: https://download.docker.com/linux/centos/7/x86_64/stable
+        gpgcheck: yes
+        gpgkey: https://download.docker.com/linux/centos/gpg
+      when: ansible_facts['distribution'] == "CentOS"
+
+    # Install Docker for both CentOS and Amazon Linux
+    - name: Install Docker
+      yum:
+        name: docker
+        state: present
+      when: ansible_facts['os_family'] == "RedHat"
+
+    # Install Python 3 for both CentOS and Amazon Linux
+    - name: Install Python3
+      yum:
+        name: python3
+        state: present
+
+    # Install pip3 using python3 on both CentOS and Amazon Linux
+    - name: Ensure pip3 is installed via Python 3
+      pip:
+        name: pip
+        executable: python3
+
+    # Start and enable Docker service on both CentOS and Amazon Linux
+    - name: Start and enable Docker service
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+
+    # Add current user to Docker group
+    - name: Add user to Docker group
+      user:
+        name: "{{ ansible_user }}"
+        groups: docker
+        append: yes
+
+    # Download Docker Compose binary and install it (for both CentOS and Amazon Linux)
+    - name: Install Docker Compose
+      get_url:
+        url: https://github.com/docker/compose/releases/download/v2.5.1/docker-compose-{{ ansible_system }}-{{ ansible_architecture }}
+        dest: /usr/local/bin/docker-compose
+        mode: '0755'
+
+    # Verify Docker Compose installation
+    - name: Check Docker Compose version
+      command: docker-compose --version
+      register: compose_version
+      changed_when: false
+
+    - debug:
+        var: compose_version.stdout
+
+
