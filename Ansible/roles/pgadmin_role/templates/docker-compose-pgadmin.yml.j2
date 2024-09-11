@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  {{postgres_service_name}}:
+    image: postgres:latest
+    {{postgres_container_name}}: postgres
+    environment:
+      POSTGRES_USER: user-postgres
+      POSTGRES_PASSWORD: postgresdb
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - {{ pgadmin_network}}
+
+  {{pgadmin_service_name}}:
+    image: dpage/pgadmin4
+     {{pgadmin_container_name}}: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: moucharafamadou0@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "80:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+      - ./servers.json:/pgadmin4/servers.json
+    networks:
+      - {{ pgadmin_network}}
+
+networks:
+  {{ pgadmin_network}}:
+
+volumes:
+  postgres_data:
+  pgadmin_data:
