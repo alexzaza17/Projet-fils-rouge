@@ -1,3 +1,4 @@
+---
 - name: "create ic-webapp network"
   docker_network:
     name: "{{ ic_webapp_network}}"
