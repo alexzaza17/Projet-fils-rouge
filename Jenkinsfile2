@@ -35,7 +35,7 @@ pipeline {
               script {
                 sh '''
                     echo "Testing container..."
-                    curl http://localhost:8000 | grep -i 200
+                    curl -I http://localhost:8000 | grep -i 200
                     sleep 10
 
                 '''
