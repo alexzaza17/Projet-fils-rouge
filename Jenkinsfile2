@@ -2,6 +2,7 @@ pipeline {
      environment {
        IMAGE_NAME = "ic-webapp"
        CONTAINER_APP_PORT = "8080"
+       APP_EXPOSED_PORT = "8000"
        DOCKERHUB_ID = "alexzaza"
        DOCKERHUB_PASSWORD = credentials('dockerhub_password')
        
@@ -23,7 +24,7 @@ pipeline {
                  sh '''
                     echo "Cleaning existing container if exist"
                     docker ps -a | grep -i $IMAGE_NAME && docker rm -f ${IMAGE_NAME}
-                    docker run --name $IMAGE_NAME -d -p 8000:8080 alexzaza/$IMAGE_NAME:$IMAGE_TAG
+                    docker run --name $IMAGE_NAME -d -p ${APP_EXPOSED_PORT}:${CONTAINER_APP_PORT} alexzaza/$IMAGE_NAME:$IMAGE_TAG
                     sleep 5
                  '''
                }
@@ -35,7 +36,7 @@ pipeline {
               script {
                 sh '''
                     echo "Testing container..."
-                    curl -I http://{HOST_IP}:8000 | grep -i 200
+                    curl -I http://{HOST_IP}:${APP_EXPOSED_PORT} | grep -i 200
                     sleep 10
 
                 '''
