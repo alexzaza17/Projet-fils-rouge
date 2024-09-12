@@ -36,7 +36,7 @@ pipeline {
               script {
                 sh '''
                     echo "Testing container..."
-                    curl -I http://{HOST_IP}:${APP_EXPOSED_PORT} | grep -i "200"
+                    curl -I http://${HOST_IP}:${APP_EXPOSED_PORT} | grep -i "200"
                     sleep 5
 
                 '''
