@@ -1,11 +1,11 @@
 pipeline {
      environment {
-       IMAGE_NAME = "static-website-example"
-       IMAGE_TAG = "latest"
+       IMAGE_NAME = "ic-webapp"
+       IMAGE_TAG = "8080"
        DOCKERHUB_ID = "alexzaza"
        DOCKERHUB_PASSWORD = credentials('dockerhub_password')
-       STAGING = "alexzaza-staging-fil-rouge"
-       PRODUCTION = "alexzaza-production-fil-rouge"
+      # STAGING = "alexzaza-staging-fil-rouge"
+       #PRODUCTION = "alexzaza-production-fil-rouge"
      }
      agent none
      stages {
@@ -13,7 +13,7 @@ pipeline {
              agent any
              steps {
                 script {
-                  sh 'docker build --no-cache -f ./Jenkins-folders/${DOCKERFILE_NAME}-t alexzaza/$IMAGE_NAME:$IMAGE_TAG ./Jenkins-folders'
+                  sh 'docker build --no-cache -f ./${DOCKERFILE_NAME} -t alexzaza/$IMAGE_NAME:$IMAGE_TAG .'
                 }
              }
         }
@@ -24,7 +24,7 @@ pipeline {
                  sh '''
                     echo "Cleaning existing container if exist"
                     docker ps -a | grep -i $IMAGE_NAME && docker rm -f ${IMAGE_NAME}
-                    docker run --name $IMAGE_NAME -d -p 80:80 alexzaza/$IMAGE_NAME:$IMAGE_TAG
+                    docker run --name $IMAGE_NAME -d -p 8000:8080 alexzaza/$IMAGE_NAME:$IMAGE_TAG
                     sleep 5
                  '''
                }
