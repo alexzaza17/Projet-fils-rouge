@@ -5,7 +5,7 @@ pipeline {
        APP_EXPOSED_PORT = "8000"
        DOCKERHUB_ID = "alexzaza"
        DOCKERHUB_PASSWORD = credentials('dockerhub_password')
-       
+       HOST_IP = "localhost" 
      }
      agent none
      stages {
