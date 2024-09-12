@@ -1,7 +1,7 @@
 pipeline {
      environment {
        IMAGE_NAME = "ic-webapp"
-       IMAGE_TAG = "8080"
+       CONTAINER_APP_PORT = "8080"
        DOCKERHUB_ID = "alexzaza"
        DOCKERHUB_PASSWORD = credentials('dockerhub_password')
        
@@ -35,7 +35,7 @@ pipeline {
               script {
                 sh '''
                     echo "Testing container..."
-                    curl -I http://localhost:8000 | grep -i 200
+                    curl -I http://{HOST_IP}:${APP_EXPOSED_PORT} | grep -i 200
                     sleep 10
 
                 '''
