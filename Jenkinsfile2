@@ -4,8 +4,7 @@ pipeline {
        IMAGE_TAG = "8080"
        DOCKERHUB_ID = "alexzaza"
        DOCKERHUB_PASSWORD = credentials('dockerhub_password')
-      #STAGING = "alexzaza-staging-fil-rouge"
-       #PRODUCTION = "alexzaza-production-fil-rouge"
+       
      }
      agent none
      stages {
