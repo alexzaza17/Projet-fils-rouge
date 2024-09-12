@@ -34,7 +34,8 @@ pipeline {
            steps {
               script {
                 sh '''
-                    curl http://${HOST_IP}:8000 | grep -i "200"
+                    echo "Testing container..."
+                    curl http://localhost:8000 | grep -i 200
                 '''
               }
            }
