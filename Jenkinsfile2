@@ -12,7 +12,7 @@ pipeline {
              agent any
              steps {
                 script {
-                  sh 'docker build --no-cache -f ./${DOCKERFILE_NAME} -t alexzaza/$IMAGE_NAME:$IMAGE_TAG .'
+                  sh 'docker build --no-cache -f ./Dockerfile_v1.0 -t alexzaza/$IMAGE_NAME:$IMAGE_TAG .'
                 }
              }
         }
@@ -34,7 +34,7 @@ pipeline {
            steps {
               script {
                 sh '''
-                    curl http://localhost | grep -i "200"
+                    curl http://${HOST_IP}:${APP_EXPOSED_PORT} | grep -i "200"
                 '''
               }
            }
