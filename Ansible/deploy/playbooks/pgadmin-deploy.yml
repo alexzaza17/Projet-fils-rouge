@@ -1,5 +1,0 @@
----
-- hosts: prod
-  become: true
-  roles:
-    - { role: pgadmin_role }
