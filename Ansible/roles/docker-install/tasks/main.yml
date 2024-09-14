@@ -1,5 +1,5 @@
 ---
-- name: Install Docker, Python3, and Docker Compose on CentOS and Amazon Linux
+- name: Install Docker, Python3, and Docker Compose on CentOS 
   hosts: all
   become: yes
 
