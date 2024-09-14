@@ -1,5 +1,5 @@
 ---
-- name: Install Docker, Python3, and Docker Compose on CentOS 
+- name: Install Docker
   hosts: all
   become: yes
 
