@@ -1,12 +1,11 @@
- pipeline {
+pipeline {
     environment {
         IMAGE_NAME = "ic-webapp"
         CONTAINER_APP_PORT = "8080"
         APP_EXPOSED_PORT = "8000"
         DOCKERHUB_ID = "alexzaza"
         DOCKERHUB_PASSWORD = credentials('dockerhub_password')
-        HOST_IP = "localhost"  // Corrected quotes
-        IMAGE_TAG = "1.0"  // Make sure this is defined
+        IMAGE_TAG = "1.0"  // Added to ensure it's set
     }
     agent none
     stages {
@@ -35,6 +34,8 @@
             agent any
             steps {
                 script {
+                    // Explicitly set HOST_IP inside the stage
+                    HOST_IP = "localhost"
                     sh '''
                         curl -I http://$HOST_IP:$APP_EXPOSED_PORT
                         sleep 5
@@ -53,17 +54,18 @@
                 }
             }
         }
-        stage ('Login and Push Image on docker hub') {  
+        stage('Login and Push Image on Docker Hub') {
             agent any
             steps {
                 script {
                     sh '''
                         echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_ID --password-stdin
                         docker push ${DOCKERHUB_ID}/$IMAGE_NAME:$IMAGE_TAG
-                    ''' 
+                    '''
                 }
-            } 
+            }
         }
     }
 }
+
 
