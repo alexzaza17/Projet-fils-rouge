@@ -35,7 +35,6 @@
             steps {
                 script {
                     sh '''
-                        echo "Testing container..."
                         curl http://localhost
                         sleep 5
                     '''
