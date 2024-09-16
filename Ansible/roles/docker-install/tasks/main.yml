@@ -1,5 +1,5 @@
 ---
-- name: Install Docker, Python3, and Docker Compose on CentOS and Amazon Linux
+- name: Install Docker packages
   hosts: all
   become: yes
 
@@ -18,7 +18,7 @@
           - yum-utils
           - device-mapper-persistent-data
           - lvm2
-        state: present
+        state: presentt
 
     # Add Docker's official repository for CentOS
     - name: Add Docker CE repository (CentOS)
