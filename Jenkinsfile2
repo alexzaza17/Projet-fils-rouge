@@ -5,7 +5,8 @@
         APP_EXPOSED_PORT = "8000"
         DOCKERHUB_ID = "alexzaza"
         DOCKERHUB_PASSWORD = credentials('dockerhub_password')
-        HOST_IP = "localhost"  // You can use an actual IP address if needed
+        HOST_IP = "localhost"  // Corrected quotes
+        IMAGE_TAG = "1.0"  // Make sure this is defined
     }
     agent none
     stages {
@@ -35,7 +36,7 @@
             steps {
                 script {
                     sh '''
-                        curl -I http://$HOST_IP:8000
+                        curl -I http://$HOST_IP:$APP_EXPOSED_PORT
                         sleep 5
                     '''
                 }
