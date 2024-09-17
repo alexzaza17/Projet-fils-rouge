@@ -22,14 +22,14 @@ pipeline {
                 script {
                     retry(5) {
                         sh 'sleep 10' // Wait for 10 seconds before each retry
-                        sh 'curl http://localhost:8000'  // Update curl to use port 8000
+                        sh 'curl http://localhost:8000'  // Use port 8000 for curl
                     }
                 }
             }
         }
         stage('Send HTTP Request') {
             steps {
-                httpRequest url: 'http://localhost:8000'  // Update httpRequest to use port 8000
+                httpRequest url: 'http://localhost:8000'  // Use port 8000 for httpRequest
             }
         }
     }
