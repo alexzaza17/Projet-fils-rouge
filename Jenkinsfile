@@ -30,19 +30,20 @@
                 }
             }
         }
-        stage('Test image') {
-            agent any
-            steps {
-                script {
-                    // Explicitly set HOST_IP inside the stage
-                    HOST_IP = "localhost"
-                    sh '''
-                        curl -I http://$HOST_IP:$APP_EXPOSED_PORT
+         stage('Test image') {
+             agent any
+              steps {
+                  script {
+                    // Set the host IP explicitly
+                      def HOST_IP = "localhost"
+                      sh '''
+                         curl -I http://$HOST_IP:$APP_EXPOSED_PORT
                         sleep 5
-                    '''
-                }
-            }
+                 '''
         }
+    }
+}
+
         stage('Clean Container') {
             agent any
             steps {
