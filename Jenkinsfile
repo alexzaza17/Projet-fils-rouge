@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Run Docker Container') {
             steps {
-                sh 'docker run -d --name ic-webap -p 80:8080 ic-webap:1.0'
+                sh 'docker run -d --name ic-webap -p 8000:8080 ic-webap:1.0'
             }
         }
         stage('Wait for Application') {
@@ -27,14 +27,14 @@ pipeline {
                 script {
                     retry(5) {
                         sh 'sleep 10' // Wait for 10 seconds before each retry
-                        sh 'curl http://localhost:80'
+                        sh 'curl http://localhost:8000'
                     }
                 }
             }
         }
         stage('Send HTTP Request') {
             steps {
-                httpRequest url: 'http://localhost:80'  // Corrected URL
+                httpRequest url: 'http://localhost:8000'  // Corrected URL
             }
         }
     }
