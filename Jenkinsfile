@@ -34,10 +34,10 @@
              agent any
               steps {
                   script {
-                    // Set the host IP explicitly
+                    // Set the host IP explicitly curl -I http://$HOST_IP:$APP_EXPOSED_PORT
                       def HOST_IP = "localhost"
                       sh '''
-                         curl -I http://$HOST_IP:$APP_EXPOSED_PORT
+                        curl -I http://localhost:80
                         sleep 5
                  '''
         }
