@@ -37,7 +37,7 @@
                     // Set the host IP explicitly curl -I http://$HOST_IP:$APP_EXPOSED_PORT
                       def HOST_IP = "localhost"
                       sh '''
-                        curl -I http://localhost:83
+                        curl -I http://192.168.56.5:83
                         sleep 5
                  '''
         }
