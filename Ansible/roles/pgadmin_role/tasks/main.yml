@@ -1,15 +1,18 @@
 ---
 - name: "Generation du docker-compose file"
   template: 
-    src: "docker-compose-Pgadmin.yml.j2"
-    dest: /home/{{ ansible_user }}/docker-compose-Pgadmin.yml
-    mode: 0655
+    src: "{{ role_path }}/templates/docker-compose-Pgadmin.yml.j2"
+    dest: /home/vagrant/docker-compose-Pgadmin.yml
+    mode: "0655"
+  become: true
     
 - name: "Generation du fichier de configuration"
   template: 
-    src: "servers.json.j2"
-    dest: /home/{{ ansible_user }}/servers.json
-    mode: 0655
+    src: "{{ role_path }}/templates/servers.json.j2"
+    dest: /home/vagrant/servers.json
+    mode: "0655"
+  become: true
 
 - name: "deploy docker-compose-Pgadmin.yml"
-  command: "docker-compose -f /home/{{ ansible_user }}/docker-compose-Pgadmin.yml up -d"
+  command: /usr/local/bin/docker-compose -f /home/vagrant/docker-compose-Pgadmin.yml up -d
+  become: true

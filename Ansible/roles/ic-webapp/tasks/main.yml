@@ -1,16 +1,20 @@
----
-- name: "create ic-webapp network"
+#launch the app
+#---
+#- name: "create ic_webapp_network"
+# roles/ic-webapp/tasks/main.yml
+- name: "create ic_webapp_network"
   docker_network:
-    name: "{{ ic_webapp_network}}"
+    name: "{{ ic_webapp_network }}"
 
-- name: "lance ic-webapp container"
+- name: "lancer ic_webapp_container"
   docker_container:
-    name: "{{ ic_webapp_container}}"
-    image: "{{ ic_webapp_image}}"
+    name: "{{ ic_webapp_container }}"
+    image: "{{ ic_webapp_image }}"  # Make sure this is set correctly
     ports:
-      - "{{ ic_webapp_port}}:8080"
-    env: 
+      - "{{ ic_webapp_port }}:8080"
+    env:
       ODOO_URL: "{{ odoo_url }}"
       PGADMIN_URL: "{{ pgadmin_url }}"
     networks:
-      - "{{ ic_webapp_network}}"
+      - name: "{{ ic_webapp_network }}"
+

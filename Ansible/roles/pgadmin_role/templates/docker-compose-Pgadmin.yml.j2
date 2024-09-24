@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  {{ postgres_service_name }}:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      POSTGRES_USER: user-postgres
+      POSTGRES_PASSWORD: postgresdb
+      POSTGRES_DB: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - {{ pgadmin_network }}
+
+  {{ pgadmin_service_name }}:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: bernardtapi1702@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+      - ${PWD}/servers.json:/pgadmin4/servers.json
+    networks:
+      - {{ pgadmin_network }}
+
+networks:
+  {{ pgadmin_network }}:
+
+volumes:
+  postgres_data:
+  pgadmin_data:
+

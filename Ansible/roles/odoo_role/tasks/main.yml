@@ -1,9 +1,14 @@
 ---
+- name: Debug ansible_user
+  debug:
+    msg: "{{ ansible_user }}"
 - name: "Generation du docker-compose file"
   template: 
     src: "docker-compose-Odoo.yml.j2"
     dest: /home/{{ ansible_user }}/docker-compose-Odoo.yml
     mode: 0655
+    force: true
 
 - name: "deploy docker-compose-Odoo.yml"
-  command: "docker-compose -f /home/{{ ansible_user }}/docker-compose-Odoo.yml up -d"
+  command: /usr/local/bin/docker-compose -f /home/vagrant/docker-compose-Odoo.yml up -d
+  become: true
