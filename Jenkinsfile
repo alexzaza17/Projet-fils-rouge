@@ -2,7 +2,7 @@
     environment {
         IMAGE_NAME = "ic-webapp"
         CONTAINER_APP_PORT = "8080"
-        APP_EXPOSED_PORT = "80"
+        APP_EXPOSED_PORT = "83"
         DOCKERHUB_ID = "alexzaza"
         DOCKERHUB_PASSWORD = credentials('dockerhub_password')
         IMAGE_TAG = "1.0"  // Added to ensure it's set
@@ -37,7 +37,7 @@
                     // Set the host IP explicitly curl -I http://$HOST_IP:$APP_EXPOSED_PORT
                       def HOST_IP = "localhost"
                       sh '''
-                        curl -I http://localhost:80
+                        curl -I http://localhost:83
                         sleep 5
                  '''
         }
