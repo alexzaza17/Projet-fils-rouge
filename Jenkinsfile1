@@ -110,7 +110,7 @@ pipeline {
               steps {
                 script {
                     sh '''
-                       export ANSIBLE_CONFIG=$(pwd)/Ansible/ansible.cfg
+                       export ANSIBLE_CONFIG=/var/jenkins_home/workspace/ic-webapp/Ansible/ansible.cfg
                        ansible-lint -x 306 Ansible/playbooks/* || echo passing linter
                        echo ${GIT_BRANCH)
                        '''
