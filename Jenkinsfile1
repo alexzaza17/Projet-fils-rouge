@@ -99,7 +99,7 @@ pipeline {
                     sh '''
                        apt update -y
                        apt install sshpass -y
-                       export ANSIBLE_CONFIG=$(pwd)/Ansible/ansible.cfg
+                       export ANSIBLE_CONFIG=/var/jenkins_home/workspace/ic-webapp/Ansible/ansible.cfg
                        ansible all -m ping --private-key id_rsa -l prod
                        '''
                     }
