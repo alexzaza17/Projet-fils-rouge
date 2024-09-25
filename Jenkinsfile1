@@ -121,7 +121,7 @@ pipeline {
             stage ("Deployment de l App en prod")  {
                 when { expression { GIT_BRANCH == 'origin/main'}}
                 stages {
-                   stage ("Production install de docker on all hosts) {
+                   stage ("Production install de docker on all hosts") {
                       steps {
                         script {
                            sh '''
