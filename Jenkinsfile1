@@ -118,7 +118,7 @@ pipeline {
                  }
               }
 
-              stage ("Deployment de l App en prod")  {
+            stage ("Deployment de l App en prod")  {
                 when { expression { GIT_BRANCH == 'origin/main'}}
                 stages {
                    stage ("Production install de docker on all hosts) {
@@ -127,12 +127,12 @@ pipeline {
                            sh '''
                                export ANSIBLE_CONFIG=$(pwd)/Ansible/ansible.cfg
                                ansible-playbook  Ansible/playbooks/docker-install.yml --vault-password-file vault.key --private-key id_rsa -l odoo_server,pgadmin_server
-                       '''
+                           '''
                     }
                  }
               }
 
-               stage ("Deployment de ic-webapp")  {
+                stage ("Deployment de ic-webapp")  {
                       steps {
                         script {
                            sh '''
