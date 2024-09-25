@@ -37,7 +37,7 @@ pipeline {
                 script {
                     sh '''
                         echo "Testing container..."
-                        curl -I http://localhost:83 | grep -i "200"
+                        curl -I http://192.168.56.10:83 | grep -i "200"
                         sleep 5
                     '''
                 }
