@@ -94,12 +94,6 @@ pipeline {
           }
 
            stage("Ping targeted hosts") {
-             #agent {
-               #docker {
-                #image 'centos:7'
-                 # args '-u root'  // To ensure you have root privileges
-                #}
-              #}
               steps {
                 script {
                   sh '''
