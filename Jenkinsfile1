@@ -94,17 +94,17 @@ pipeline {
           }
 
            stage("Ping targeted hosts") {
-             agent {
-               docker {
-                  image 'centos:7'
-                  args '-u root'  // To ensure you have root privileges
-                }
-              }
+             #agent {
+               #docker {
+                #image 'centos:7'
+                 # args '-u root'  // To ensure you have root privileges
+                #}
+              #}
               steps {
                 script {
                   sh '''
-                    yum update -y
-                    yum install sshpass -y
+                    apt update -y
+                    apt install sshpass -y
                     export ANSIBLE_CONFIG=/var/jenkins_home/workspace/ic-webapp/Ansible/ansible.cfg
                     ansible all -m ping --private-key id_rsa -l prod
              '''
