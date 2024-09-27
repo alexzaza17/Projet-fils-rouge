@@ -7,7 +7,8 @@
 ##### Application
 Il est question ici pour nous de mettre sur pied un site web vitrine de la societe *IC GROUP* ", qui doit acceder a deux applications phares nomme:
 - odoo
-- pgadmin.
+- pgadmin
+
 Notre devoir est divise en 3 grandes parties:
 - La premiere partie est la conteneurisation de l’application web
 - La deuxieme partie mise en place d'un pipeline CI/CD à l'aide de JENKINS et de ANSIBLE
