@@ -18,13 +18,13 @@ Notre devoir est divise en 3 grandes parties:
 - La deuxieme partie consiste a afficher la liste des etudiants en utilisant docker-compose
 - La troisieme partie consiste a pusher notre image cree sur le registry
 
-######Plan de travail 
+###### Plan de travail 
 Nous allons mettre en place les commandes des differents conteneurs 
 - Nous allons faire le tag de notre image apres run le conteneur api qui nous permettra de voir la liste des etudiants
 - Nous allons mettre en place un conteneur en utilisant le docker-compose.yml pour l affiche des infos des etudiants
 - Nous allons creer le registry avec le docker-compose-registry pour pouvoir heberger notre application en local
  
-#####Elaboration du plan de travail
+##### Elaboration du plan de travail
 
 Partie 1
  
