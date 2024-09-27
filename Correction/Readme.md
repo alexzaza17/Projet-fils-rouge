@@ -74,24 +74,29 @@ Apres un clique sur le logo de pgadmin nous obtenons ceci
 A : Service
 Type Nodeport 
 Rôle : Ce service achemine le trafic externe vers le pod ic-webapp (B) : Ce service achemine le trafic externe vers le pod ic-webapp (B). Il sert de point d'entrée pour les demandes des utilisateurs.
+
 B : ic-webapp
 Type : Pod
 Rôle : Ce module exécute l'application web. Il gère la logique commerciale principale et les interactions avec les utilisateurs pour l'application Web initiale.
+
 C : Service
 Type: Il peut etre considere  Service Cluster IP ou de type Nodeport
 Rôle : Ce service achemine le trafic du pod ic-webapp (B) vers le pod Odoo_Web (D). Il facilite la communication entre l'application web et le backend Odoo.
+
 D : Odoo_Web
 Type : Pod
 Rôle : Ce pod exécute l'application web Odoo. Il gère la logique de base de l'application et sert l'interface Odoo à l'utilisateur.
+
 E : Service
 Type : Service cluster IP
 Role : Ce service achemine le trafic du pod Odoo_Web (D) vers le pod BDD_Odoo (F). Il gère la connexion entre l'application Odoo et sa base de données.
+
 F : BDD_Odoo
 Type : Pod
 Role : Ce pod exécute la base de données Odoo (probablement PostgreSQL). Il stocke toutes les données nécessaires à l'application Odoo.
+
 G: service 
 Type de service: Il peut etre considere  Service Cluster IP ou de type Nodeport
-
 Rôle : Ce service achemine le trafic vers le pod Pgadmin (H) : Ce service achemine le trafic vers le pod Pgadmin (H). Il permet d'effectuer des tâches administratives sur la base de données.
 
 
