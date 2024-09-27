@@ -27,10 +27,27 @@ Nous allons mettre en place les commandes des differents conteneurs
 Partie 1
  
 1-Ici nous avons faire le build de l image en precisant le nom de l'image: ic-webapp, le tag:1.0 et le contexte
-![Build image](https://github.com/user-attachments/assets/ad3bc4bd-060d-4077-9790-66d8294521fa)
+
+![Build_image](https://github.com/user-attachments/assets/8a513314-40f9-410c-a82a-2b0dde02ae86) 
 
 2- Run l image de l application qui a ete builde et creer le conteneur avec pour nom test-ic-webapp
-![Run-container](https://github.com/user-attachments/assets/b5f48384-938a-4417-b801-b199d747deb1)
 
-3-  Cette commande permet de voir et confirmer que notre conteneur a bien ete cree
-![docker images](https://github.com/user-attachments/assets/69f5fec5-734e-4e6e-8239-8ecb7182c78a)
+![Run-container](https://github.com/user-attachments/assets/f1fadd4e-7db5-42d6-aa63-6c1e97ceae40) 
+
+3-  Cette commande permet de voir et confirmer que notre conteneur a bien ete cree et l image a ete builde
+
+![docker-images](https://github.com/user-attachments/assets/0f99cf78-eee8-47ac-8327-74723a35cb28)
+
+![docker-ps](https://github.com/user-attachments/assets/e21f41d3-5c98-4cb5-94a9-96de90c3d8df)
+
+4- verification du fonctionnement de l application
+
+![docker-ic-webapp](https://github.com/user-attachments/assets/4e5009d2-504f-4a7e-a488-103e3b87ae43)
+
+5- push de  appli sur notre dockerhub 
+
+![docker-push-dockerhub ](https://github.com/user-attachments/assets/3f7fa06b-fd78-4296-8b05-010a81440ec1)
+
+6- Arret et suppression du container
+
+![docker stop and remove](https://github.com/user-attachments/assets/7c3ae499-8826-428a-ae7b-d51865eed55b)
