@@ -69,7 +69,7 @@ Apres un clique sur le logo de pgadmin nous obtenons ceci
 
 ###### Partie 3: déploiement des différentes applications dans un cluster Kubernetes
 
-####### A- Donnons le role et le type des ressources en nous basant sur l architecture logicielle 
+###### A-Donnons le role et le type des ressources en nous basant sur l architecture logicielle 
 
 A : Service
 Type Nodeport 
