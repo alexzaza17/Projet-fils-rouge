@@ -44,6 +44,14 @@ Partie 1
 
 ![docker-ic-webapp](https://github.com/user-attachments/assets/4e5009d2-504f-4a7e-a488-103e3b87ae43)
 
+Apres un clique sur le logo de odoo nous obtenons ceci 
+
+![docker for  odoo](https://github.com/user-attachments/assets/3366d67c-324c-49d9-95ba-10a040fa3c67)
+
+Apres un clique sur le logo de pgadmin nous obtenons ceci 
+
+![docker for pgadmin ](https://github.com/user-attachments/assets/9807b1c2-02cc-4557-b2ca-1b536633e68c)
+
 5- push de  appli sur notre dockerhub 
 
 ![docker-push-dockerhub ](https://github.com/user-attachments/assets/3f7fa06b-fd78-4296-8b05-010a81440ec1)
