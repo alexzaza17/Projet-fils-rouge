@@ -106,16 +106,38 @@ Rôle : Ce service achemine le trafic vers le pod Pgadmin (H) : Ce service achem
 Il est question ici pour nous de deployer notre application ic-webapp a l aide des fichiers manifest qui contiendra notre application odoo et pgadmin. Nous avons tout d abord creer le fichier:
 
 . ic-webapp-namespace.yml: permet l isolation de l organisation de nos ressources et le management du control d access de notre charge de travail dans l environnement kubernetes que nous utilisons
+
 . ic-webapp-deployment.yml: permet de deployer l'application
+
 . ic-webapp-Nodeport.yml: permet d'exposer (les pods) notre application via le port 30006 a l exterieur de la machine. En attaquant la machine avec l adresse ip de notre vm mikube et le port on obtient l application
 
 ![Namespace-kubernetes](https://github.com/user-attachments/assets/5500fb02-f2d4-42d9-a884-05b35b21cc20)
 
 
-###### B.1- Déploiement de l’application odoo
+###### B.2- Déploiement de l’application postgres
 
-###### B.1- Déploiement de l’application pgadmin
+Un volume persistence claim(pvc) postgres-pvc.yml: il permettra de consommer le volume persistent (pv), ici nous n avons pas defini le pv car il sera mis en place de facon automatique
+
+deployer postgres-deployment: permet de deployer l'application c est a dire notre base de donnees. Notre pod va consommer le pvc.
+
+Un service Cluster ip postgres-service.yml: permet a nos pods application uniquement a l interieur du cluster.
+
+###### B.3- Déploiement de l’application odoo
+
+odoo-pvc.yml:  il permettra de consommer le volume persistent (pv), ici nous n avons pas defini le pv car il sera mis en place de facon automatique
+
+odoo-deployment.yml: permet de deployer l'application odoo c est a dire notre frontend. Notre pod va consommer le pvc.
+
+odoo-Nodeport.yml: permet d'exposer (les pods) notre application via le port 30007 a l exterieur de la machine
 
 
+###### B.4- Déploiement de l’application pgadmin
 
+pgadmin-pvc.yml: il permettra de consommer le volume persistent (pv), ici nous n avons pas defini le pv car il sera mis en place de facon automatique
+
+pgadmin-deployment.yml: permet de deployer l'application odoo c est a dire notre frontend. Notre pod va consommer le pvc.
+
+pgadmin-nodeport.yml: permet d'exposer (les pods) notre application via le port 30007 a l exterieur de la machine
+
+pgadmin-config.yml: 
 
