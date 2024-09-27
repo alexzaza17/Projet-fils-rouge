@@ -99,9 +99,22 @@ G: service
 Type de service: Il peut etre considere  Service Cluster IP ou de type Nodeport
 Rôle : Ce service achemine le trafic vers le pod Pgadmin (H) : Ce service achemine le trafic vers le pod Pgadmin (H). Il permet d'effectuer des tâches administratives sur la base de données.
 
+###### B-Deploiement de nos applications
+
+###### B.1- Déploiement de l’application ic-webapp
+
+Il est question ici pour nous de deployer notre application ic-webapp a l aide des fichiers manifest qui contiendra notre application odoo et pgadmin. Nous avons tout d abord creer le fichier:
+
+. ic-webapp-namespace.yml: permet l isolation de l organisation de nos ressources et le management du control d access de notre charge de travail dans l environnement kubernetes que nous utilisons
+. ic-webapp-deployment.yml: permet de deployer l'application
+. ic-webapp-Nodeport.yml: permet d'exposer (les pods) notre application via le port 30006 a l exterieur de la machine. En attaquant la machine avec l adresse ip de notre vm mikube et le port on obtient l application
+
+![Namespace-kubernetes](https://github.com/user-attachments/assets/5500fb02-f2d4-42d9-a884-05b35b21cc20)
 
 
+###### B.1- Déploiement de l’application odoo
 
+###### B.1- Déploiement de l’application pgadmin
 
 
 
