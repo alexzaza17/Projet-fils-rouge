@@ -130,6 +130,8 @@ odoo-deployment.yml: permet de deployer l'application odoo c est a dire notre fr
 
 odoo-Nodeport.yml: permet d'exposer (les pods) notre application via le port 30007 a l exterieur de la machine
 
+![kuber-odoo](https://github.com/user-attachments/assets/eeac1348-08fd-4ad8-9def-ee7587dd561e)
+
 
 ###### B.4- Déploiement de l’application pgadmin
 
@@ -141,3 +143,5 @@ pgadmin-nodeport.yml: permet d'exposer (les pods) notre application via le port 
 
 pgadmin-config.yml: 
 
+
+![kuber-pgadmin](https://github.com/user-attachments/assets/9bb15175-431b-49ca-826a-5abed7b1943a)
