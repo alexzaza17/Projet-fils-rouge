@@ -61,9 +61,18 @@ Apres un clique sur le logo de pgadmin nous obtenons ceci
 ![docker stop and remove](https://github.com/user-attachments/assets/7c3ae499-8826-428a-ae7b-d51865eed55b)
 
 
+###### Partie 2:  Mise en place d'un pipeline CI/CD à l'aide de JENKINS et de ANSIBLE.
 
+##### b- Infrastructure
+Dans cette partie il sera question pour nous de mettre en place 3 servers On Premises avec VirtualBox en utilisant vagrant 
 
+- Dans le premier server nous allons installer jenkins
+- Dans le deuxieme server nous allons installer pgadmin et ic-webapp
+- Dans le troisieme server nous allons installer odoo
 
+![server_3](https://github.com/user-attachments/assets/9303ff5b-5317-4712-a3c4-95268ec44c85)
+
+##### c- Automatisation du déploiement
 
 
 
@@ -139,7 +148,7 @@ pgadmin-pvc.yml: il permettra de consommer le volume persistent (pv), ici nous n
 
 pgadmin-deployment.yml: permet de deployer l'application odoo c est a dire notre frontend. Notre pod va consommer le pvc.
 
-pgadmin-nodeport.yml: permet d'exposer (les pods) notre application via le port 30007 a l exterieur de la machine
+pgadmin-nodeport.yml: permet d'exposer (les pods) notre application via le port 30008 a l exterieur de la machine
 
 pgadmin-config.yml: 
 
