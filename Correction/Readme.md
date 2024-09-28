@@ -74,7 +74,35 @@ Dans cette partie il sera question pour nous de mettre en place 3 servers On Pre
 
 ##### c- Automatisation du déploiement
 
+-  Un docker-compose permettant de déployer entièrement l’application Odoo tout en créant un réseau docker et un volume pour faire persister les données de la BDD
+  
+-  un docker-compose permettant de déployer l’application pgadmin avec les paramètres décrits dans la partie1 (fichier servers.json et persistance des données)
 
+![Ansible-docker-install1](https://github.com/user-attachments/assets/4ba6152e-99df-4385-a3a2-11d5518725ae)
+
+![Ansible-docker-instal2](https://github.com/user-attachments/assets/b0a12aa5-2553-4aba-a89a-01401bb353aa)
+
+![Ansible-docker-install3](https://github.com/user-attachments/assets/a3ea4b77-bfcb-4b31-b0c9-95f5d7d366c0)
+
+![Ansible-ic-webapp-install](https://github.com/user-attachments/assets/6b113e72-4367-43ba-86cd-730b3838ed41)
+
+![Ansible-odoo-install](https://github.com/user-attachments/assets/880c1932-4504-45c1-ac8e-ac558c6c4fae)
+
+![Ansible-pgadmin-install](https://github.com/user-attachments/assets/1f916079-c27d-4bb5-b76a-262ddbe23271)
+
+![Ansible-ic-webapp-browser](https://github.com/user-attachments/assets/0690065c-61b7-48f6-b4e2-b78f876624a9)
+
+![Ansible-odoo-browser](https://github.com/user-attachments/assets/197d212e-5781-4b2b-ab33-7cff9aebdadd)
+
+![Ansible-pgadmin-browser](https://github.com/user-attachments/assets/6318250b-a01c-40f6-bfd0-c4b669bf1b2c)
+
+![jenkins-complet1](https://github.com/user-attachments/assets/6042d168-506a-4595-8580-d7151e459820)
+
+![jenkins-complet2](https://github.com/user-attachments/assets/f470979d-dd0d-4f23-b423-691f4ea12d03)
+
+![deploy-jenkins-ic-webapp](https://github.com/user-attachments/assets/1260c127-36ff-4df6-a659-30deace788ba)
+
+![deploy-jenkins-odoo](https://github.com/user-attachments/assets/47dfec98-701e-4d84-988f-6e2b4cbf14b7)
 
 ###### Partie 3: déploiement des différentes applications dans un cluster Kubernetes
 
