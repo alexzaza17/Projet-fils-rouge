@@ -147,7 +147,7 @@ Nous allons realiser ses differents jobs sur jenkins CI/CD qui permettrons de me
 - Test d'acceptation de l'image(
 - Clean container
 - push de l image sur le Dockerhub)
-- ceheck l environnement Ansible 
+- check l environnement Ansible 
 - Deploy l appli
 - Install nos differents role ansible
 - Ping targeted c-a-d veriefier que l appli fonctionne
