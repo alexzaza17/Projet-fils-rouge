@@ -74,9 +74,47 @@ Dans cette partie il sera question pour nous de mettre en place 3 servers On Pre
 
 ##### c- Automatisation du déploiement
 
+##### c.1- Partie Ansible
+
+Il est question ici pour nous de mettre en place un code Ansible qui nous permettra de configurer une machine cliente a distance c est a dire installer docker a l aide d un role. Nous avons tout d abord creer le fichier:
+
 -  Un docker-compose permettant de déployer entièrement l’application Odoo tout en créant un réseau docker et un volume pour faire persister les données de la BDD
   
 -  un docker-compose permettant de déployer l’application pgadmin avec les paramètres décrits dans la partie1 (fichier servers.json et persistance des données)
+
+#####  Ansible ressources 
+
+- ansible.cfg Le fichier de configuartion. Nous avons defini le chemin du fichier d inventaire, le repertoire ou il stocke ses roles, become: true pour l escalade des privileges pour faire du sudo si besoin et le host_key_checking
+  
+- Le dossier goup_vars qui contient le fichier prod.yml qui permettra ansible de definir l adresse de la machine sur laquelle on voudra faire la configuration et la varaiable du servers.json de pgadmin servers, en fin on demande a Ansible d accepter la connexion a distance 
+
+- Le dossier files/secrets contient le fichier credentials.vault qui permettra de securiser la connexion
+
+- Le dossier role qui contient le dossiers suivant: qui va etre appeler dans lorsqu on va lance la commande ansible playbook avec le fichier deploy.yml. le dossier apache_docker contient le tasks qui lui a son tour contient deux fichiers a savoir main.yml et le pre-tasks.yml
+
+* docker-install qui contient le dossier tasks avec e fichier main.yml qui permettra de conteneuriser motre application
+  
+* ic-webapp qui contient le dossier tasks et defautls avec leurs ficheirs main.yml
+  Dans le dossier defaults/main.yml nous avons defini les variables par defaults qui seront utilises a savoir les ip, mon docker_id
+  Dans le dossier tasks/main.yml nous avons creer le reseau et ensuite creer le conteneur avec le module conteneur
+  
+* odoo_role qui contient le dossier tasks, defautls et templates ts et templates qui contiennent les fichiers main.yml pour les deux premiers, docker-compose-Odoo.yml.j2 pour le template
+  Dans le dossier defaults/main.yml nous avons defini les variables par defaults
+  Dans le dossier tasks/main.yml nous avons cree le fichier template avec ses droits apres on lance la commande docker-compose up
+  Dans le dossier template/docker-compose-Odoo.yml.j2 nous avons templatise le docker-compose de odoo et nous avons variabilises et ses variables ont ete definis sur la partie defaults que nous avons defini plus hauts
+  
+* pgadmin_role qui contient le dossier tasks, defaults et templates qui contiennent les fichiers main.yml pour les deux premiers, docker-compose-Pgadmin.yml.j2 etb server.json pour le template
+  Dans le dossier defaults/main.yml nous avons defini les variables par defaults
+  Dans le dossier tasks/main.yml nous avons cree le fichier template avec ses droits apres on genere le ervers.json.j2 qui nous a ete donnees dans l enonce , enfin on lance la commande docker-compose up
+  Dans le dossier template/docker-compose-Odoo.yml.j2 nous avons templatise le docker-compose de pgadmin et servers.json que nous avons variabilises et ses variables ont ete definis sur la partie defaults que nous avons defini plus hauts
+  
+- Le dossier playbooks qui contient nos differents playbooks docker-install.yml, ic-webapp-deploy.yml, odoo-depoy.yml et pdgadmin-deploy.yml qui seront lance dans la commande notre Ansible playbook pour executer la configuration
+
+- Le hosts.yml inventaire principal qui contient les adresses ip de nos differents server a savoir
+* odoo_server est defini par 192.168.56.11
+* ic_webapp_server est defini par 192.168.56.12
+* pgamin_server est defini par 192.168.56.12
+ Dans notre inventaire nous avons aussi defini le ansible_user et ansible_ssh_pass pour permettre d avoir access a nos differents server 
 
 ![Ansible-docker-install1](https://github.com/user-attachments/assets/4ba6152e-99df-4385-a3a2-11d5518725ae)
 
@@ -95,6 +133,28 @@ Dans cette partie il sera question pour nous de mettre en place 3 servers On Pre
 ![Ansible-odoo-browser](https://github.com/user-attachments/assets/197d212e-5781-4b2b-ab33-7cff9aebdadd)
 
 ![Ansible-pgadmin-browser](https://github.com/user-attachments/assets/6318250b-a01c-40f6-bfd0-c4b669bf1b2c)
+
+##### c.2- Partie Jenkins
+
+Il est question ici pour nous de mettre en place un pipeline qui nous permettra de deployer et d heberger application dans les differents servers. Nous avons d'abord ecrit le *Dockerfile_v1.0* du code. Creer les jobs qui nous permettrons de realiser celle ci dans notre *Jenkinsfile1* . Ansible va etre dedans notre pipeline jenkins car c est lui qui va aller installer ou deployment l appli dans nos 2 servers a savoir app_servers1 pour odoo et app_servers2 pour pgadmin et ic-webapp
+
+Plan de travail
+
+Nous allons realiser ses differents jobs sur jenkins CI/CD qui permettrons de mettre en place notre pipeline: 
+
+- Build  l image
+- Run le container
+- Test d'acceptation de l'image(
+- Clean container
+- push de l image sur le Dockerhub)
+- ceheck l environnement Ansible 
+- Deploy l appli
+- Install nos differents role ansible
+- Ping targeted c-a-d veriefier que l appli fonctionne
+- check la syntaxe de nos differents playbooks
+- Deployment de notre aplli sur les differents servers a grace a leur adresse ip que nous avons configures sur Ansible
+
+Avant de realiser ces differentes atsks nousavons tout a d abord redige le Dockerfile, ensuite le jenkinsfile(nous avons bien precise que n importe quel agent pour executer notre job)
 
 ![jenkins-complet1](https://github.com/user-attachments/assets/6042d168-506a-4595-8580-d7151e459820)
 
