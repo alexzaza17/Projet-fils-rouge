@@ -17,14 +17,10 @@ Notre devoir est divise en 3 grandes parties:
 ##### Partie 1: conteneurisation de l’application web
 
 ###### Plan de travail 
-Nous allons mettre en place les commandes des differents conteneurs 
+Dans cette partie ci il sera question pour nous de conteneuriser l application web python qui utilise le module Flask de la societe ic-group. Nous allons mettre en place les commandes des differents conteneurs 
 - Nous allons ecrire le Dockerfile du site web de ic-group  faire le tag de notre image apres run le conteneur api qui n
 - Nous allons mettre en place un conteneur c-a-d build l image , la tagger et apres run le conteneur 
 - Nous allons push notre image sur le Dockerhub le regisstry pour heberber l'application et enfin stop et supprimer le conteneur
- 
-##### Elaboration du plan de travail
-
-Partie 1
  
 1-Ici nous avons faire le build de l image en precisant le nom de l'image: ic-webapp, le tag:1.0 et le contexte
 
@@ -52,7 +48,7 @@ Apres un clique sur le logo de pgadmin nous obtenons ceci
 
 ![docker for pgadmin ](https://github.com/user-attachments/assets/9807b1c2-02cc-4557-b2ca-1b536633e68c)
 
-5- push de  appli sur notre dockerhub 
+5- push de  application sur notre dockerhub 
 
 ![docker-push-dockerhub ](https://github.com/user-attachments/assets/3f7fa06b-fd78-4296-8b05-010a81440ec1)
 
@@ -139,6 +135,13 @@ Il est question ici pour nous de mettre en place un code Ansible qui nous permet
 Il est question ici pour nous de mettre en place un pipeline qui nous permettra de deployer et d heberger application dans les differents servers. Nous avons d'abord ecrit le *Dockerfile_v1.0* du code. Creer les jobs qui nous permettrons de realiser celle ci dans notre *Jenkinsfile1* . Ansible va etre dedans notre pipeline jenkins car c est lui qui va aller installer ou deployment l appli dans nos 2 servers a savoir app_servers1 pour odoo et app_servers2 pour pgadmin et ic-webapp
 
 Plan de travail
+
+Tout il sera judicieux de parler du Jenkins-tools qui compose de cinq fichiers a savoir:
+- Dockerfile qui permet d ecrire la commande pour conteneuriser, lancer l activation et l installation de Jenkins et du server web enable
+- Docker-compose.yml va permettre de creer le daemon docker et de deinir le volume(rendre persistent)
+- Jenkins-install.sh c est le fichier) qui permettra jenkins
+- Jenkins.conf permet de configurer jenkins
+- start.sh permet d activer jenkins et nginx
 
 Nous allons realiser ses differents jobs sur jenkins CI/CD qui permettrons de mettre en place notre pipeline: 
 
